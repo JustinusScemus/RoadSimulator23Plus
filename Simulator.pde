@@ -9,6 +9,8 @@ List<Road> roads = new ArrayList<Road>();
 void setup(){
   size(1600, 900);
   background(0xcfefef);
+  textAlign(CENTER); textSize(50);
+  text("Road Simulator 2023+", 800, 2);
 }
 
 void mouseClicked() {
