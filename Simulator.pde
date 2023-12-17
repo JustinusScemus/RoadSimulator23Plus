@@ -11,6 +11,7 @@ void setup(){
   size(1600, 900);
   background(0xcfefef);
   textAlign(CENTER); textSize(50);
+  fill(0x000000);
   text("Road Simulator 2023+", 800, 100);
 }
 
