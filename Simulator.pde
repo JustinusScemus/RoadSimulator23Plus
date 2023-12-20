@@ -3,6 +3,7 @@
 byte pointsSelected = 0;
 Point[] temppoints = new Point[2];
 import java.util.List;
+import java.util.ListIterator;
 import java.time.Clock; //For spawning cars
 
 List<Road> roads = new ArrayList<Road>();
@@ -29,4 +30,16 @@ void mouseClicked() {
   }
 }
 
-void draw() {}
+void draw() {
+  final ListIterator<Road> ri = roads.listIterator();
+  stroke(#FF0000);
+  while (ri.hasNext()){
+    Road r = ri.next();
+    final ListIterator<Point> pi = r.points.listIterator();
+    Point p = pi.next();
+    while (pi.hasNext()) {
+      Point p2 = pi.next();
+      line(p.x, p.y, p2.x, p2.y);
+    }
+  }
+}
