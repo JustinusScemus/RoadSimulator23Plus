@@ -24,7 +24,7 @@ void mouseClicked() {
     temppoints[pointsSelected] = new Point(mouseX, mouseY, 0);
     pointsSelected ++;
     if (pointsSelected >= 2) {
-      roads.add(new Road(temppoints[0], temppoints[1], "Road 1"));
+      roads.add(new Road(temppoints[0], temppoints[1], "Road "+str(roads.size() + 1)));
       pointsSelected = 0;
     }
   }
