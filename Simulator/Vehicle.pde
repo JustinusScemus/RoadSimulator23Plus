@@ -20,3 +20,9 @@ class Minibus extends PVehicle{
     super(regno, maxCap);
   }
 }
+
+class Bus extends PVehicle{
+  public Bus(char[] regno, int maxCap) {
+    super(regno, maxCap);
+  }
+}
