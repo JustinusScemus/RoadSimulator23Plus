@@ -9,8 +9,9 @@ import java.time.Clock; //For spawning cars
 import java.util.Random;
 
 List<Road> roads = new ArrayList<Road>();
-Map<String, Vehicle> vehicles ;//= new HashMap<String, Vehicle>()
+Map<char[], Vehicle> vehicles = new HashMap<char[], Vehicle>();
 Clock clock; Random rnd = new Random();
+short reg_no_no = 100;
 
 void setup(){
   size(1600, 900);
@@ -37,6 +38,15 @@ void mouseClicked() {
   }
 }
 
+Vehicle spawnVehicle(Random rnd, char[] regno) {
+  /**Spawns a random vehicle
+  of random type*/
+  float a = rnd.nextFloat();
+  if (a < 0.1) return new PVehicle(regno, Math.round(a * 30 + 4));
+  if (a > 0.9) return new Bus(regno, Math.round(a * 30 + 120));
+  return null;
+}
+
 void draw() {
   final ListIterator<Road> ri = roads.listIterator();
   stroke(#FF0000);
@@ -49,4 +59,11 @@ void draw() {
       line(p.x, p.y, p2.x, p2.y);
     }
   }
+  
+  Vehicle v = spawnVehicle(rnd, ("AB "+str(reg_no_no)).toCharArray());
+  if (v != null) {
+    vehicles.put(v.regno, v);
+    print("New car, ", v.regno, " class ", v.getClass().getName());
+  }
+  if (reg_no_no >= 9999) reg_no_no = 100;
 }

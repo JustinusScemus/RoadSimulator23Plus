@@ -9,3 +9,4 @@ Functions to be implemented:
 Functions preliminary implemented:
 
 - clicking two points on a map to create roads
+- spawning of `Vehicles` with registration numbers
