@@ -5,6 +5,8 @@ Functions to be implemented:
 
 - Extending roads
 - Enable moving through screen by dragging
+- Create another `class` for `Infrastructure`
+* Magic numbers!
 
 Functions preliminary implemented:
 
