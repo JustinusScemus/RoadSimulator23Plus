@@ -1,6 +1,6 @@
 abstract class Vehicle {
-  char[] regno;
-  public Vehicle(char[] regno) {
+  String regno;
+  public Vehicle(String regno) {
     this.regno = regno;
   }
 }
@@ -9,20 +9,20 @@ class PVehicle extends Vehicle{
   /* Originally intended for Private Vehicle, but then I realized that I can
   make it "Passenger" Vehicle */
   final int maxCapacity;
-  public PVehicle(char[] regno, int maxCap) {
+  public PVehicle(String regno, int maxCap) {
     super(regno);
     this.maxCapacity = maxCap;
   }
 }
 
 class Minibus extends PVehicle{
-  public Minibus(char[] regno, int maxCap) {
+  public Minibus(String regno, int maxCap) {
     super(regno, maxCap);
   }
 }
 
 class Bus extends PVehicle{
-  public Bus(char[] regno, int maxCap) {
+  public Bus(String regno, int maxCap) {
     super(regno, maxCap);
   }
 }

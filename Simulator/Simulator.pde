@@ -9,9 +9,9 @@ import java.time.Clock; //For spawning cars
 import java.util.Random;
 
 List<Road> roads = new ArrayList<Road>();
-Map<char[], Vehicle> vehicles = new HashMap<char[], Vehicle>();
+Map<String, Vehicle> vehicles = new HashMap<String, Vehicle>();
 Clock clock; Random rnd = new Random();
-short reg_no_no = 100;
+char[] reg_no_abc; short reg_no_no = 100;
 
 void setup(){
   size(1600, 900);
@@ -21,6 +21,7 @@ void setup(){
   text("Road Simulator 2023+", 800, 100);
   clock = Clock.systemDefaultZone();
   rnd.setSeed (clock.millis());
+  reg_no_abc = "AB".toCharArray();
 }
 
 void mouseClicked() {
@@ -30,6 +31,7 @@ void mouseClicked() {
     circle(mouseX, mouseY, 5);
     redraw();
     temppoints[pointsSelected] = new Point(mouseX, mouseY, 0);
+    print("New point at ", mouseX, " and ", mouseY, '\t');
     pointsSelected ++;
     if (pointsSelected >= 2) {
       roads.add(new Road(temppoints[0], temppoints[1], "Road "+str(roads.size() + 1)));
@@ -38,7 +40,7 @@ void mouseClicked() {
   }
 }
 
-Vehicle spawnVehicle(Random rnd, char[] regno) {
+Vehicle spawnVehicle(Random rnd, String regno) {
   /**Spawns a random vehicle
   of random type*/
   float a = rnd.nextFloat();
@@ -60,10 +62,17 @@ void draw() {
     }
   }
   
-  Vehicle v = spawnVehicle(rnd, ("AB "+str(reg_no_no)).toCharArray());
+  Vehicle v = spawnVehicle(rnd, String.valueOf(reg_no_abc)+" "+str(reg_no_no));
+  reg_no_no += rnd.nextInt(300) + 100;
   if (v != null) {
     vehicles.put(v.regno, v);
-    print("New car, ", v.regno, " class ", v.getClass().getName());
+    println("New car, ", v.regno, " class ", v.getClass().getName());
   }
-  if (reg_no_no >= 9999) reg_no_no = 100;
+  if (reg_no_no >= 9999) {
+    reg_no_no -= 9900;
+    if (reg_no_abc[1] == 'Z') {
+      reg_no_abc[1] = 'A';
+      if (reg_no_abc[0] == 'Z') reg_no_abc[0] = 'A'; else reg_no_abc[0] += 1;
+    } else reg_no_abc[1]++;
+  }
 }
