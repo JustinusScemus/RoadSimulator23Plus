@@ -6,7 +6,8 @@ Functions to be implemented:
 - Extending roads
 - Enable moving through screen by dragging
 - Create another `class` for `Infrastructure`
-* Magic numbers!
+  - Magic numbers!
+  - subclasses: `House`, `Village`, `ResTower`
 
 Functions preliminary implemented:
 
