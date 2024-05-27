@@ -12,7 +12,7 @@ List<Road> roads = new ArrayList<Road>();
 Map<String, Vehicle> vehicles = new HashMap<String, Vehicle>();
 Clock clock; Random rnd = new Random();
 char[] reg_no_abc; short reg_no_no = 100;
-int viewpoint_x = 0; int viewpoint_y = 0;
+int viewpoint_x = 0; int viewpoint_y = 0; Boolean showVP = true;
 final color bg_color = 0xffcfefef;
 
 void setup(){
@@ -90,9 +90,10 @@ void draw() {
       if (reg_no_abc[0] == 'Z') reg_no_abc[0] = 'A'; else reg_no_abc[0] += 1;
     } else reg_no_abc[1]++;
   }
-  
-  fill(0x000000);
-  textAlign(LEFT); textSize(10);
-  text("Viewpoint X: "+viewpoint_x, 10, 200);
-  text("Viewpoint Y: "+viewpoint_y, 10, 220);
+  if (showVP) {
+    fill(0x000000);
+    textAlign(LEFT); textSize(10);
+    text("Viewpoint X: "+viewpoint_x, 10, 200);
+    text("Viewpoint Y: "+viewpoint_y, 10, 220);
+  }
 }
