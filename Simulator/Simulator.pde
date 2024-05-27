@@ -28,17 +28,17 @@ void setup(){
 }
 
 void mouseDragged() {
-    viewpoint_x += pmouseX;
-    viewpoint_y += pmouseY;
-    println("pmouseX: = " + pmouseX + " and pmouseY: = " + pmouseY);
-    redraw();
+  int d_x = mouseX - pmouseX;
+  int d_y = mouseY - pmouseY;
+  viewpoint_x += d_x;
+  viewpoint_y += d_y;
+  redraw();
 }
 
 void mouseClicked() {
-  //println("X = ", str(mouseX), "Y = ", str(mouseY));
   if (mouseButton == LEFT) {
-    temppoints[pointsSelected] = new Point(mouseX, mouseY, 0);
-    print("New point at ", mouseX, " and ", mouseY, '\t');
+    temppoints[pointsSelected] = new Point(mouseX - viewpoint_x, mouseY - viewpoint_y, 0);
+    print("New point at ", mouseX, " (", mouseX - viewpoint_x, ") and ", mouseY, " (", mouseY - viewpoint_y, ")", '\t');
     pointsSelected ++;
     if (pointsSelected >= 2) {
       roads.add(new Road(temppoints[0], temppoints[1], "Road "+str(roads.size() + 1)));
@@ -64,7 +64,7 @@ void draw() {
   rect(0, 110, width, height-110);
   stroke(#FF0000); fill(#FFFFFF);
   for (int i = 0; i < 2; i++) {
-    if (null != temppoints[i]) circle(temppoints[i].x, temppoints[i].y, 5f);
+    if (null != temppoints[i]) circle(temppoints[i].x + viewpoint_x, temppoints[i].y + viewpoint_y, 5f);
   }
   while (ri.hasNext()){
     Road r = ri.next();
@@ -72,7 +72,7 @@ void draw() {
     Point p = pi.next();
     while (pi.hasNext()) {
       Point p2 = pi.next();
-      line(p.x, p.y, p2.x, p2.y);
+      line(p.x + viewpoint_x, p.y + viewpoint_y, p2.x + viewpoint_x, p2.y + viewpoint_y);
     }
   }
   if (rnd.nextFloat() > 0.9) {
