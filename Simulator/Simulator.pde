@@ -24,7 +24,6 @@ void setup(){
   clock = Clock.systemDefaultZone();
   rnd.setSeed (clock.millis());
   reg_no_abc = "AB".toCharArray();
-  noLoop();
 }
 
 void mouseDragged() {
@@ -32,7 +31,11 @@ void mouseDragged() {
   int d_y = mouseY - pmouseY;
   viewpoint_x += d_x;
   viewpoint_y += d_y;
-  redraw();
+}
+
+void keyPressed() {
+  if (key == 'k' || key == 'K') showVP = !showVP;
+  //else if (key == 'r' || key == 'R') {}
 }
 
 void mouseClicked() {
@@ -45,7 +48,6 @@ void mouseClicked() {
       pointsSelected = 0;
       temppoints[0] = null; temppoints[1] = null;
     }
-    redraw();
   }
 }
 
