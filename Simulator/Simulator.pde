@@ -12,7 +12,7 @@ List<Road> roads = new ArrayList<Road>();
 Map<String, Vehicle> vehicles = new HashMap<String, Vehicle>();
 Clock clock; Random rnd = new Random();
 char[] reg_no_abc; short reg_no_no = 100;
-int viewpoint_x = 0; int viewpoint_y = 0; Boolean showVP = true;
+int viewpoint_x = 0; int viewpoint_y = 0; Boolean showVP = true; boolean started = false;
 final color bg_color = 0xffcfefef;
 
 void setup(){
@@ -35,10 +35,10 @@ void mouseDragged() {
 
 void keyPressed() {
   if (key == 'k' || key == 'K') showVP = !showVP;
-  //else if (key == 'r' || key == 'R') {}
 }
 
 void mouseClicked() {
+  started = true;
   if (mouseButton == LEFT) {
     temppoints[pointsSelected] = new Point(mouseX - viewpoint_x, mouseY - viewpoint_y, 0);
     print("New point at ", mouseX, " (", mouseX - viewpoint_x, ") and ", mouseY, " (", mouseY - viewpoint_y, ")", '\t');
@@ -62,8 +62,10 @@ Vehicle spawnVehicle(Random rnd, String regno) {
 
 void draw() {
   final ListIterator<Road> ri = roads.listIterator();
-  fill(bg_color);stroke(bg_color);
-  rect(0, 110, width, height-110);
+  if (started) background(bg_color); else{
+    fill(bg_color);stroke(bg_color);
+    rect(0, 110, width, height-110);
+  }
   stroke(#FF0000); fill(#FFFFFF);
   for (int i = 0; i < 2; i++) {
     if (null != temppoints[i]) circle(temppoints[i].x + viewpoint_x, temppoints[i].y + viewpoint_y, 5f);
