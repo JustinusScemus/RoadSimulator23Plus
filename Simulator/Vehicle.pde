@@ -3,6 +3,8 @@ abstract class Vehicle {
   public Vehicle(String regno) {
     this.regno = regno;
   }
+  int map_x; int map_y; int speed;
+  void accel(int perDrawSquared) {speed += perDrawSquared;}
 }
 
 class PVehicle extends Vehicle{
