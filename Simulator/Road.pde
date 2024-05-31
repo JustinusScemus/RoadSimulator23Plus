@@ -17,5 +17,8 @@ class Road {
     this.name = name;
     println("Road constructed with name: " + name);
   }
-  
+  boolean intersect(Road other) {
+    final ListIterator<Point> pts1 = this.points.listIterator(); final ListIterator<Point> pts2 = other.points.listIterator();
+    return false;
+  }
 }
