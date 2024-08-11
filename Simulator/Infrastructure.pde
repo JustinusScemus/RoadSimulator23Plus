@@ -1,21 +1,30 @@
 abstract static class Infrastructure {
   public int getMagicNumber() {return 0;}
   public int getDenominator() {return 1000;}
+  List <Point> polygon;
 }
 
-class House extends Infrastructure {
+abstract class Residential extends Infrastructure {
+  int population;
+  protected Residential(int population) {this.population = population;}
+}
+
+class House extends Residential {
   @Override
   int getMagicNumber() {return 1020;}
   @Override
   int getDenominator() {return 1050;}
+  public House(int population) {super(population);}
 }
 
-class Village extends Infrastructure {
+class Village extends Residential {
   @Override int getMagicNumber() {return 2;}
   @Override int getDenominator() {return 500;}
+  public Village(int population) {super(population);}
 }
 
-class ResTower extends Infrastructure {
+class ResTower extends Residential {
   @Override int getMagicNumber() {return 35;}
   @Override int getDenominator() {return 100;}
+  public ResTower(int population) {super(population);}
 }

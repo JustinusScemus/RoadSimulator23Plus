@@ -19,6 +19,7 @@ class Road {
   }
   boolean intersect(Road other) {
     final ListIterator<Point> pts1 = this.points.listIterator(); final ListIterator<Point> pts2 = other.points.listIterator();
+    //Orientation
     return false;
   }
 }
