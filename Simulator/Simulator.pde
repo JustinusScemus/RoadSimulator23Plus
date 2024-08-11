@@ -85,6 +85,7 @@ void draw() {
     if (v != null) {
       vehicles.put(v.regno, v);
       //println("New car, ", v.regno, " class ", v.getClass().getName());
+      println("New car, at x: ", v.map_x, " and y: ", v.map_y );
     }
   }
   if (reg_no_no >= 9999) {

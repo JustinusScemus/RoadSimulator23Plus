@@ -1,9 +1,11 @@
 abstract class Vehicle {
-  String regno;
+  String regno; boolean appears;
   public Vehicle(String regno) {
     this.regno = regno;
+    this.appears = false;
   }
-  int map_x; int map_y; int speed;
+  float map_x; float map_y; float speed;
+  public void setlocation(float x, float y) {this.map_x = x; this.map_y = y; appears = true;}
   void accel(int perDrawSquared) {speed += perDrawSquared;}
 }
 
