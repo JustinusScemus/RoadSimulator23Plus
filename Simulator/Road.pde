@@ -7,6 +7,13 @@ class Point{
     this.x = x; this.y = y; this.z = z;
   }
 }
+float three_point(Point a, Point b, Point c) {
+  //"cross vector" of (b-a) and (c-b)
+  float x1 = b.x - a.x; float y1 = b.y - a.y;
+  float x2 = c.x - b.x; float y2 = c.y - b.y;
+  return (x1 * y2 - x2 - y1);
+}
+
 import java.util.List;
 class Road {
   String name;
@@ -18,8 +25,13 @@ class Road {
     println("Road constructed with name: " + name);
   }
   boolean intersect(Road other) {
-    final ListIterator<Point> pts1 = this.points.listIterator(); final ListIterator<Point> pts2 = other.points.listIterator();
-    //Orientation
+    final ListIterator<Point> pts1 = this.points.listIterator(1); final ListIterator<Point> pts2 = other.points.listIterator(1);
+    do {
+      Point a = pts1.previous();
+      pts1.next(); Point b = pts1.next();
+      float f1 = three_point(a, b, pts2.previous());
+      pts2.next(); float f2 = three_point(a, b, pts2.next());
+    } while (pts1.hasNext() && pts2.hasNext());
     return false;
   }
 }
