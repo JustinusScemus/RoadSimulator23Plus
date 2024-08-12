@@ -95,11 +95,13 @@ void draw() {
   if (unspawn.size() > 0) for (int a = 0; (a + 1) < ff / 0.9 && unspawn.size() > 0;) {
     int to_spawn = rnd.nextInt(unspawn.size());
     Vehicle v = vehicles.get(unspawn.get(to_spawn)); //<>//
-    if (v != null) {if (!v.appears) {
-      v.setlocation(rnd.nextFloat() * 1600 - viewpoint_x, rnd.nextFloat() * 900 - viewpoint_y);
+    if (v == null) {print("NULLCAR"); a++;}
+    else if (!v.appears) {
+      v.setlocation(rnd.nextFloat() * width - viewpoint_x, rnd.nextFloat() * height - viewpoint_y);
       unspawn.remove(to_spawn);
       a++;
-    }} else {print("NULLCAR"); a++;}
+    }
+    
   }
   for (Map.Entry<String, Vehicle> v : vehicles.entrySet()) if (v.getValue().appears) {
     stroke(#0000FF); fill(#7F7FFF);
