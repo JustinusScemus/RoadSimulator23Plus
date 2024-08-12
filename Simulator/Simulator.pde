@@ -92,7 +92,7 @@ void draw() {
     }
   }
   float ff = rnd.nextFloat();
-  if (unspawn.size() > 0) for (int a = 0; (a + 1) < ff / 0.4 && unspawn.size() > 0;) {
+  if (unspawn.size() > 0) for (int a = 0; (a + 1) < ff / 0.9 && unspawn.size() > 0;) {
     int to_spawn = rnd.nextInt(unspawn.size());
     Vehicle v = vehicles.get(unspawn.get(to_spawn)); //<>//
     if (v != null) {if (!v.appears) {
