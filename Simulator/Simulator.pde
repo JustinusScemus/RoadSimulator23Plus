@@ -46,6 +46,7 @@ void mouseClicked() {
     pointsSelected ++;
     if (pointsSelected >= 2) {
       roads.add(new Road(temppoints[0], temppoints[1], "Road "+str(roads.size() + 1)));
+      //for (Point temppoint: temppoints) CityMap.registerPoint(temppoint) ; results in static error
       pointsSelected = 0;
       temppoints[0] = null; temppoints[1] = null;
     }
@@ -83,7 +84,7 @@ void draw() {
   if (rnd.nextFloat() > 0.9) {
     String s_reg_no = String.valueOf(reg_no_abc)+" "+str(reg_no_no);
     Vehicle v = spawnVehicle(rnd, s_reg_no);
-    unspawn.add(s_reg_no); //<>//
+    unspawn.add(s_reg_no); //<>// //<>//
     reg_no_no += rnd.nextInt(300) + 100;
     if (v != null) {
       vehicles.put(v.regno, v);
@@ -94,7 +95,7 @@ void draw() {
   float ff = rnd.nextFloat();
   if (unspawn.size() > 0) for (int a = 0; (a + 1) < ff / 0.9 && unspawn.size() > 0;) {
     int to_spawn = rnd.nextInt(unspawn.size());
-    Vehicle v = vehicles.get(unspawn.get(to_spawn)); //<>//
+    Vehicle v = vehicles.get(unspawn.get(to_spawn)); //<>// //<>//
     if (v == null) {print("NULLCAR"); a++;}
     else if (!v.appears) {
       v.setlocation(rnd.nextFloat() * width - viewpoint_x, rnd.nextFloat() * height - viewpoint_y);
@@ -105,7 +106,7 @@ void draw() {
   }
   for (Map.Entry<String, Vehicle> v : vehicles.entrySet()) if (v.getValue().appears) {
     stroke(#0000FF); fill(#7F7FFF);
-    circle(v.getValue().map_x + viewpoint_x, v.getValue().map_y + viewpoint_y, 5f); //<>//
+    circle(v.getValue().map_x + viewpoint_x, v.getValue().map_y + viewpoint_y, 5f); //<>// //<>//
   }
   if (reg_no_no >= 9999) {
     reg_no_no -= 9900;
