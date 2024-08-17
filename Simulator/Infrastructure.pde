@@ -28,3 +28,12 @@ class ResTower extends Residential {
   @Override int getDenominator() {return 100;}
   public ResTower(int population) {super(population);}
 }
+
+static class CityMap {
+  private class RegisTree { //Tree
+    Point point;
+    RegisTree left;
+    RegisTree right;
+  }
+  private RegisTree x_registree, y_registree;
+}
