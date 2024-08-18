@@ -60,5 +60,9 @@ static class CityMap {
     x_registree.add(p, 'x');
     y_registree.add(p, 'y');
   }
- 
+  PVector toClosest(float x, float y, float z) {
+    RegisTree rx = x_registree, ry = y_registree;
+    float minimumMag = sqrt(sq(rx.point.x - x) + sq(rx.point.y - y)); Point tempClosest = rx.point;
+    return new PVector(tempClosest.x-x, tempClosest.y-y, z);
+  }
 }
