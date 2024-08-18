@@ -1,4 +1,4 @@
-//import Array;
+CityMap cm = new CityMap();
 
 byte pointsSelected = 0;
 Point[] temppoints = new Point[2];
@@ -46,7 +46,7 @@ void mouseClicked() {
     pointsSelected ++;
     if (pointsSelected >= 2) {
       roads.add(new Road(temppoints[0], temppoints[1], "Road "+str(roads.size() + 1)));
-      //for (Point temppoint: temppoints) CityMap.registerPoint(temppoint) ; results in static error
+      for (Point temppoint: temppoints) cm.registerPoint(temppoint) ; //resulted in static error when CityMap was Static //<>// //<>//
       pointsSelected = 0;
       temppoints[0] = null; temppoints[1] = null;
     }
@@ -84,21 +84,24 @@ void draw() {
   if (rnd.nextFloat() > 0.9) {
     String s_reg_no = String.valueOf(reg_no_abc)+" "+str(reg_no_no);
     Vehicle v = spawnVehicle(rnd, s_reg_no);
-    unspawn.add(s_reg_no); //<>// //<>//
+    unspawn.add(s_reg_no);
     reg_no_no += rnd.nextInt(300) + 100;
     if (v != null) {
       vehicles.put(v.regno, v);
       //println("New car, ", v.regno, " class ", v.getClass().getName());
-      println("New car, at x: ", v.map_x, " and y: ", v.map_y );
+      //println("New car, at x: ", v.map_x, " and y: ", v.map_y );
     }
   }
   float ff = rnd.nextFloat();
   if (unspawn.size() > 0) for (int a = 0; (a + 1) < ff / 0.9 && unspawn.size() > 0;) {
     int to_spawn = rnd.nextInt(unspawn.size());
-    Vehicle v = vehicles.get(unspawn.get(to_spawn)); //<>// //<>//
+    Vehicle v = vehicles.get(unspawn.get(to_spawn));
     if (v == null) {print("NULLCAR"); a++;}
     else if (!v.appears) {
-      v.setlocation(rnd.nextFloat() * width - viewpoint_x, rnd.nextFloat() * height - viewpoint_y);
+      float x = rnd.nextFloat() * width - viewpoint_x; float y = rnd.nextFloat() * height - viewpoint_y;
+      v.setlocation(x, y);
+      PVector closestRoadPoint = cm.toClosest(x, y, 0);
+      //println("Distance: " + closestRoadPoint.mag()); nullPointer!
       unspawn.remove(to_spawn);
       a++;
     }
@@ -106,7 +109,7 @@ void draw() {
   }
   for (Map.Entry<String, Vehicle> v : vehicles.entrySet()) if (v.getValue().appears) {
     stroke(#0000FF); fill(#7F7FFF);
-    circle(v.getValue().map_x + viewpoint_x, v.getValue().map_y + viewpoint_y, 5f); //<>// //<>//
+    circle(v.getValue().map_x + viewpoint_x, v.getValue().map_y + viewpoint_y, 5f);
   }
   if (reg_no_no >= 9999) {
     reg_no_no -= 9900;
