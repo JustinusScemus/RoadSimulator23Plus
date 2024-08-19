@@ -1,4 +1,4 @@
-import java.util.Queue;
+import java.util.ArrayDeque;
 abstract class Vehicle {
   String regno; boolean appears;
   public Vehicle(String regno) {
@@ -6,10 +6,10 @@ abstract class Vehicle {
     this.appears = false;
   }
   float map_x; float map_y; float speed; float angle;
-  Queue<Point> destinations ;
+  ArrayDeque<Point> destinations = new ArrayDeque<Point>();
   public void setlocation(float x, float y) {this.map_x = x; this.map_y = y; appears = true;}
   void accel(int perDrawSquared) {speed += perDrawSquared;}
-  void setDestination(Point destination) {}
+  void setDestination(Point destination) {destinations.add(destination);}
 }
 
 class PVehicle extends Vehicle{
