@@ -101,7 +101,7 @@ void draw() {
       float x = rnd.nextFloat() * width - viewpoint_x; float y = rnd.nextFloat() * height - viewpoint_y;
       v.setlocation(x, y);
       PVector closestRoadPoint = cm.toClosest(x, y, 0);
-      //println("Distance: " + closestRoadPoint.mag()); nullPointer!
+      print("Distance: "); if (closestRoadPoint == null) println("N/A"); else println(closestRoadPoint.mag()); //nullPointer?
       unspawn.remove(to_spawn);
       a++;
     }
