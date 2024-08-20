@@ -14,6 +14,7 @@ List<String> unspawn = new ArrayList<String>(); //vehicles that are not yet to a
 Clock clock; Random rnd = new Random();
 char[] reg_no_abc; short reg_no_no = 100;
 int viewpoint_x = 0; int viewpoint_y = 0; Boolean showVP = true; boolean started = false;
+int zoom = 0;
 final color bg_color = 0xffcfefef;
 
 void setup(){
@@ -25,6 +26,12 @@ void setup(){
   clock = Clock.systemDefaultZone();
   rnd.setSeed (clock.millis());
   reg_no_abc = "AB".toCharArray();
+}
+
+void mouseWheel(MouseEvent event) {
+  int e = event.getCount();
+  zoom -= e; //Bigger number means closer zoom
+  println(e);
 }
 
 void mouseDragged() {

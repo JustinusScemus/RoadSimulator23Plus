@@ -3,6 +3,7 @@ Road Simulator in Processing 3
 
 Functions to be implemented:
 
+- Mouse wheel for zoom
 - Extending roads
 - Checking if roads intersect
 - Create other `abstract` sub`class`es than `Residential`, `extends Infrastructure`
