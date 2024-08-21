@@ -24,14 +24,22 @@ class Road {
     this.name = name;
     println("Road constructed with name: " + name);
   }
-  boolean intersect(Road other) {
-    final ListIterator<Point> pts1 = this.points.listIterator(1); final ListIterator<Point> pts2 = other.points.listIterator(1);
-    do {
-      Point a = pts1.previous();
-      pts1.next(); Point b = pts1.next();
-      float f1 = three_point(a, b, pts2.previous());
-      pts2.next(); float f2 = three_point(a, b, pts2.next());
-    } while (pts1.hasNext() && pts2.hasNext());
-    return false;
+  Point intersect(Road other) {
+    //final ListIterator<Point> pts1 = this.points.listIterator(1); final ListIterator<Point> pts2 = other.points.listIterator(1);
+    //do {
+    //  Point a = pts1.previous(); //<>//
+    //  pts1.next(); Point b = pts1.next();
+    //  float f1 = three_point(a, b, pts2.previous());
+    //  pts2.next(); float f2 = three_point(a, b, pts2.next());
+    //} while (pts1.hasNext() && pts2.hasNext());
+    //This would return a float, TODO: evaluate possibility of doing this
+    
+    //for (int i = 0; i < this.points.size() -1; i++) {
+    //  float m1 = this.points.get(i).y;
+    //  for (int j = 0; j < other.points.size() -1; j++) {
+         
+    //  }
+    //}
+    return null;
   }
 }
