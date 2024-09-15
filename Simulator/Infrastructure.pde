@@ -65,7 +65,7 @@ static class CityMap {
     Point tempClosest = rx.point; if (tempClosest == null) return null;
     float minimumMag = sqrt(sq(tempClosest.x - x) + sq(tempClosest.y - y)), tempMag;
     do {
-      tempMag = sqrt(sq(rx.point.x - x) + sq(rx.point.y - y)); //<>//
+      tempMag = sqrt(sq(rx.point.x - x) + sq(rx.point.y - y));
       if (tempMag < minimumMag) {
         tempClosest = rx.point; minimumMag = tempMag;
       }

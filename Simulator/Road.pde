@@ -32,7 +32,6 @@ class Road {
     //  float f1 = three_point(a, b, pts2.previous());
     //  pts2.next(); float f2 = three_point(a, b, pts2.next());
     //} while (pts1.hasNext() && pts2.hasNext());
-    //This would return a float, TODO: evaluate possibility of doing this
     
     //for (int i = 0; i < this.points.size() -1; i++) {
     //  float m1 = this.points.get(i).y;
