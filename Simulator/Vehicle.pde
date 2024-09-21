@@ -10,7 +10,7 @@ abstract class Vehicle {
   public void setlocation(float x, float y) {this.map_x = x; this.map_y = y; appears = true;}
   void accel(int perDrawSquared) {speed += perDrawSquared;}
   void setDestination(Point destination) {destinations.add(destination);}
-  //atan(destinations.first())
+  //atan(destinations.getFirst())
   void move() {this.map_x += cos(angle); this.map_y += sin(angle);}
 }
 
