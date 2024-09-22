@@ -6,6 +6,9 @@ class Point{
   public Point(float x, float y, float z) {
     this.x = x; this.y = y; this.z = z;
   }
+  public PVector to(Point other) {
+    return new PVector(other.x - this.x, other.y - this.y, other.z - this.z);
+  }
 }
 float three_point(Point a, Point b, Point c) {
   //"cross vector" of (b-a) and (c-b)
