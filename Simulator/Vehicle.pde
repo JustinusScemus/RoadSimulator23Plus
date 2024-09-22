@@ -9,8 +9,11 @@ abstract class Vehicle {
   ArrayDeque<Point> destinations = new ArrayDeque<Point>();
   public void setlocation(float x, float y) {this.map_x = x; this.map_y = y; appears = true;}
   void accel(int perDrawSquared) {speed += perDrawSquared;}
-  void setDestination(Point destination) {destinations.add(destination);}
-  //atan(destinations.getFirst())
+  void setDestination(Point destination) {
+    destinations.add(destination);
+    PVector p = new Point(this.map_x, this.map_y).to(destinations.getFirst());
+    angle = atan(p.y / p.x); //<>//
+  }
   void move() {this.map_x += cos(angle); this.map_y += sin(angle);}
 }
 
