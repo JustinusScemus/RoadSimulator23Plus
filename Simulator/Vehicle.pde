@@ -5,16 +5,20 @@ abstract class Vehicle {
     this.regno = regno;
     this.appears = false;
   }
-  float map_x; float map_y; float speed; float angle;
+  float map_x; float map_y; private float speed; Float angle;
   ArrayDeque<Point> destinations = new ArrayDeque<Point>();
   public void setlocation(float x, float y) {this.map_x = x; this.map_y = y; appears = true;}
-  void accel(int perDrawSquared) {speed += perDrawSquared;}
+  void accel(int perDrawSquared) {if (angle != null) this.speed += perDrawSquared;}
   void setDestination(Point destination) {
     destinations.add(destination);
-    PVector p = new Point(this.map_x, this.map_y).to(destinations.getFirst());
-    angle = atan(p.y / p.x); //<>//
+    PVector p = new Point(this.map_x, this.map_y).to(destinations.getFirst()); //<>//
+    this.setMovement(p);
   }
-  void move() {this.map_x += cos(angle); this.map_y += sin(angle);}
+  void setMovement(PVector p) {
+    angle = atan(p.y / p.x); //<>//
+    
+  }
+  void move() {this.map_x += cos(angle) * speed; this.map_y += sin(angle) * speed;}
 }
 
 class PVehicle extends Vehicle{
