@@ -53,7 +53,7 @@ void mouseClicked() {
     pointsSelected ++;
     if (pointsSelected >= 2) {
       roads.add(new Road(temppoints[0], temppoints[1], "Road "+str(roads.size() + 1)));
-      for (Point temppoint: temppoints) cm.registerPoint(temppoint) ; //resulted in static error when CityMap was Static //<>// //<>//
+      for (Point temppoint: temppoints) cm.registerPoint(temppoint) ; //resulted in static error when CityMap was Static
       pointsSelected = 0;
       temppoints[0] = null; temppoints[1] = null;
     }
