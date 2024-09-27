@@ -48,6 +48,11 @@ void keyPressed() {
 void mouseClicked() {
   started = true;
   if (mouseButton == LEFT) {
+    PVector toClosest = cm.toClosest(mouseX - viewpoint_x, mouseY - viewpoint_y, 0);
+    if (toClosest != null && toClosest.mag() < 5) {
+      print("Put point");
+      return;
+    }
     temppoints[pointsSelected] = new Point(mouseX - viewpoint_x, mouseY - viewpoint_y, 0);
     print("New point at ", mouseX, " (", mouseX - viewpoint_x, ") and ", mouseY, " (", mouseY - viewpoint_y, ")", '\t');
     pointsSelected ++;
