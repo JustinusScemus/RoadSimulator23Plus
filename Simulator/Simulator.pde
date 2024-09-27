@@ -103,12 +103,13 @@ void draw() {
   if (unspawn.size() > 0) for (int a = 0; (a + 1) < ff / 0.9 && unspawn.size() > 0;) {
     int to_spawn = rnd.nextInt(unspawn.size());
     Vehicle v = vehicles.get(unspawn.get(to_spawn));
-    if (v == null) {print("NULLCAR"); a++;}
+    if (v == null) {/*print("NULLCAR");*/ a++;}
     else if (!v.appears) {
       float x = rnd.nextFloat() * width - viewpoint_x; float y = rnd.nextFloat() * height - viewpoint_y;
       v.setlocation(x, y);
       PVector closestRoadPoint = cm.toClosest(x, y, 0);
-      print("Distance: "); if (closestRoadPoint == null) println("N/A"); else println(closestRoadPoint.mag()); //nullPointer?
+      //print("Distance: "); if (closestRoadPoint == null) println("N/A"); else println(closestRoadPoint.mag()); //nullPointer?
+      if (closestRoadPoint != null && closestRoadPoint.mag() < 5) {v.setMovement(closestRoadPoint);}
       unspawn.remove(to_spawn);
       a++;
     }
