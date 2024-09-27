@@ -9,6 +9,7 @@ class Point{
   public PVector to(Point other) {
     return new PVector(other.x - this.x, other.y - this.y, other.z - this.z);
   }
+  Road join(Road a, Road b) {return a;}
 }
 float three_point(Point a, Point b, Point c) {
   //"cross vector" of (b-a) and (c-b)
@@ -43,5 +44,10 @@ class Road {
     //  }
     //}
     return null;
+  }
+  void splitmiddle(Random rnd) {
+    float lerp_t = rnd.nextFloat();
+    int splitsegment = rnd.nextInt(this.points.size());
+    /*points.add()*/ /*lerp(,, lerp_t), lerp(,, lerp_t), lerp(,, lerp_t)*/; //TODO
   }
 }
