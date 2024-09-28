@@ -31,7 +31,7 @@ void setup(){
 void mouseWheel(MouseEvent event) {
   int e = event.getCount();
   zoom -= e; //Bigger number means closer zoom
-  println(e);
+  println("Zoom happens at ", mouseX, ", ", mouseY);
 }
 
 void mouseDragged() {
