@@ -126,8 +126,19 @@ void draw() {
     
   }
   for (Map.Entry<String, Vehicle> v : vehicles.entrySet()) if (v.getValue().appears) {
+    float x = v.getValue().map_x; float y = v.getValue().map_y;
     stroke(#0000FF); fill(#7F7FFF);
-    circle(v.getValue().map_x + viewpoint_x, v.getValue().map_y + viewpoint_y, 5f);
+    circle(x + viewpoint_x, y + viewpoint_y, 5f);
+    if (v.getValue().destinations.isEmpty()) {
+      Point closestRoadPoint = cm.getClosest(x, y);
+      if (closestRoadPoint != null) {
+        PVector movement = new Point(x,y).to(closestRoadPoint);
+        if (movement.mag() < 10) {
+          v.getValue().setDestination (closestRoadPoint);
+        }
+      }
+    }
+    v.getValue().move();
   }
   if (reg_no_no >= 9999) {
     reg_no_no -= 9900;

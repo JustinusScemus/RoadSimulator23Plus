@@ -15,10 +15,17 @@ abstract class Vehicle {
     this.setMovement(p);
   }
   void setMovement(PVector p) {
-    angle = atan(p.y / p.x); //<>//
-    
+    angle = atan(-p.y / p.x);
+    if (p.x < 0)
+      angle += PI / 2;
+    accel(1);
   }
-  void move() {this.map_x += cos(angle) * speed; this.map_y += sin(angle) * speed;}
+  void move() {if (angle != null) {this.map_x += cos(angle) * speed; this.map_y -= sin(angle) * speed;
+    if (new Point(map_x, map_y).to(destinations.getFirst()).mag() < 5) {
+      accel(-1);
+      destinations.removeFirst();
+    }
+  }}
 }
 
 class PVehicle extends Vehicle{
