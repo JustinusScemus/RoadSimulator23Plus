@@ -45,10 +45,13 @@ class Road {
     //}
     return null;
   }
-  void splitmiddle(Random rnd) {
-    float lerp_t = rnd.nextFloat(); //<>//
+  Point splitmiddle(Random rnd) {
+    float lerp_t = rnd.nextFloat();
     int splitsegment = rnd.nextInt(this.points.size() - 1);
     Point prevpoint = this.points.get(splitsegment), nextpoint = this.points.get(splitsegment + 1);
-    points.add(new Point(lerp(prevpoint.x, nextpoint.x, lerp_t), lerp(prevpoint.y, nextpoint.y, lerp_t), lerp(prevpoint.z, nextpoint.z, lerp_t))); //TODO
+    Point splitpoint = new Point(lerp(prevpoint.x, nextpoint.x, lerp_t), lerp(prevpoint.y, nextpoint.y, lerp_t), lerp(prevpoint.z, nextpoint.z, lerp_t));
+    points.add(splitsegment + 1, splitpoint);
+    print(name, " splits at ", lerp_t);
+    return splitpoint;
   }
 }

@@ -86,11 +86,16 @@ void draw() {
   }
   while (ri.hasNext()){
     Road r = ri.next();
+    if (rnd.nextFloat() > 0.9999) {
+      Point p = r.splitmiddle(rnd);
+      cm.registerPoint(p);
+    }
     final ListIterator<Point> pi = r.points.listIterator();
     Point p = pi.next();
     while (pi.hasNext()) {
       Point p2 = pi.next();
       line(p.x + viewpoint_x, p.y + viewpoint_y, p2.x + viewpoint_x, p2.y + viewpoint_y);
+      p = p2;
     }
   }
   if (rnd.nextFloat() > 0.9) {
