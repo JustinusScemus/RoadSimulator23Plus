@@ -51,11 +51,11 @@ void mouseClicked() {
     PVector toClosest = cm.toClosest(mouseX - viewpoint_x, mouseY - viewpoint_y, 0);
     if (toClosest != null && toClosest.mag() < 5) {
       print("Put point");
-      return;
-    }
+      temppoints[pointsSelected] = cm.getClosest(mouseX - viewpoint_x, mouseY - viewpoint_y);
+    } else {
     temppoints[pointsSelected] = new Point(mouseX - viewpoint_x, mouseY - viewpoint_y, 0);
     print("New point at ", mouseX, " (", mouseX - viewpoint_x, ") and ", mouseY, " (", mouseY - viewpoint_y, ")", '\t');
-    pointsSelected ++;
+    } pointsSelected ++;
     if (pointsSelected >= 2) {
       roads.add(new Road(temppoints[0], temppoints[1], "Road "+str(roads.size() + 1)));
       for (Point temppoint: temppoints) cm.registerPoint(temppoint) ; //resulted in static error when CityMap was Static
