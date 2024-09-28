@@ -29,6 +29,12 @@ class ResTower extends Residential {
   public ResTower(int population) {super(population);}
 }
 
+class Industrial extends Infrastructure {}
+
+class Commercial extends Infrastructure {}
+
+class Recreational extends Infrastructure {}
+
 static class CityMap {
   private class RegisTree { //Tree
     Point point;

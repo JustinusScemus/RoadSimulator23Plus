@@ -6,10 +6,6 @@ Functions to be implemented:
 - Mouse wheel for zoom
 - Extending roads
 - Checking if roads intersect
-- Create other `abstract` sub`class`es than `Residential`, `extends Infrastructure`
-  - `Industrial`
-  - `Commercial`
-  - `Recreational`
 
 Functions preliminary implemented:
 
@@ -17,6 +13,10 @@ Functions preliminary implemented:
 - spawning of `Vehicles` with registration numbers
 - viewpoints that allow dragging
 - Enable moving through screen by dragging
-- Create another `class` for `Infrastructure`
-  - Magic numbers!
-  - subclasses: `House`, `Village`, `ResTower`
+- `Infrastructure` `class` and subclasses:
+  - `Residential`
+    - `House`, `Village`, `ResTower`
+    - Magic numbers!
+  - `Industrial`
+  - `Commercial`
+  - `Recreational`
