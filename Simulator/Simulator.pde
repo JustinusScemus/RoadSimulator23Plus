@@ -136,5 +136,6 @@ void draw() {
     textAlign(LEFT); textSize(10);
     text("Viewpoint X: "+viewpoint_x, 10, 200);
     text("Viewpoint Y: "+viewpoint_y, 10, 220);
+    text("Zoom level: " + zoom, 10, 240);
   }
 }
